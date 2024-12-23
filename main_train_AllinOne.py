@@ -1,7 +1,7 @@
 import torch
 import argparse
 import numpy as np
-from modules.tokenizers import Tokenizer, ModernTokenizer
+from modules.tokenizers import Tokenizer, MedicalReportTokenizer
 from modules.dataloaders import R2DataLoader
 from modules.metrics import compute_scores
 from modules.optimizers import build_optimizer, build_lr_scheduler
@@ -110,7 +110,7 @@ def main():
     
         
     # tokenizer = Tokenizer(args)
-    tokenizer = ModernTokenizer(args)
+    tokenizer = MedicalReportTokenizer(args)
     
     train_dataloader = R2DataLoader(args, tokenizer, split='train', shuffle=True)
     val_dataloader = R2DataLoader(args, tokenizer, split='val', shuffle=False)

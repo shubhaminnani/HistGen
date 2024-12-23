@@ -1,7 +1,7 @@
 import torch
 import argparse
 import numpy as np
-from modules.tokenizers import Tokenizer
+from modules.tokenizers import Tokenizer, MedicalReportTokenizer
 from modules.dataloaders import R2DataLoader
 from modules.metrics import compute_scores
 from modules.tester_AllinOne import Tester
@@ -99,7 +99,8 @@ def main():
     torch.backends.cudnn.benchmark = False
     np.random.seed(args.seed)
     
-    tokenizer = Tokenizer(args)
+    # tokenizer = Tokenizer(args)
+    tokenizer = MedicalReportTokenizer(args)
     test_dataloader = R2DataLoader(args, tokenizer, split='test', shuffle=False)
     model = HistGenModel(args, tokenizer)
 
